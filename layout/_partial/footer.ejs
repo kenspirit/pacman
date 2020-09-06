@@ -26,7 +26,15 @@
 		<% } %>
 		<% if(theme.author.linkedin){ %>
         <a href="https://www.linkedin.com/<%=theme.author.linkedin %>" target="_blank" title="linkedin"></a>
-        <% } %>
+    <% } %>
+    <% if (theme.mermaid.enable) { %>
+		  <script src='https://unpkg.com/mermaid@<%=theme.mermaid.version %>/dist/mermaid.min.js'></script>
+		  <script>
+		    if (window.mermaid) {
+		      mermaid.initialize({{ JSON.stringify(theme.mermaid.options) }});
+		    }
+		  </script>
+		<% } %>
 	</div>
 		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © <%= new Date().getFullYear() %> 
 		<% if (config.author) { %>
